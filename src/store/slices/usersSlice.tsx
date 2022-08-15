@@ -6,6 +6,7 @@ const initialState = {
     {
       id: uuidv4(),
       name: "Morpheus",
+      avatar: "",
       messages: [
         {
           to: "me",
@@ -20,6 +21,7 @@ const initialState = {
     {
       id: uuidv4(),
       name: "Mr.Robot",
+      avatar: "",
       messages: [
         {
           to: "me",
@@ -33,7 +35,8 @@ const initialState = {
     },
     {
       id: uuidv4(),
-      name: "",
+      avatar: "",
+      name: "Gilfoyd",
       messages: [
         {
           to: "interlocutor",
