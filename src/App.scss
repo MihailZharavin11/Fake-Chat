@@ -12,15 +12,17 @@
 }
 
 .chat__wrapper {
+  border: 1px solid #adadad;
   height: 100%;
-  border: 1px solid red;
   display: grid;
   grid-template: 1fr / minmax(0px, 400px) auto;
+  overflow: hidden;
 }
 
 .chat__navigation {
   display: grid;
   grid-template: minmax(0px, 170px) auto/ 1fr;
+  overflow: hidden;
   .chat__navigation-title {
     padding: 30px;
     background-color: #eeeeee;
@@ -59,13 +61,58 @@
   }
 
   .chat__navigation-messages {
-    padding: 32px 30px;
+    padding: 32px 0px 32px 32px;
+    border-right: 1px solid #adadad;
+    overflow: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 12px;
+      background-color: #f5f5f5;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #e4e4e4;
+    }
     h3 {
       font-weight: 500;
       font-size: 32px;
       line-height: 39px;
       color: #0085ff;
       margin-bottom: 32px;
+    }
+    .messages {
+      display: flex;
+      gap: 16px;
+      padding: 16px;
+      border-bottom: 1px solid #adadad;
+    }
+    .messages__content {
+      display: flex;
+      flex-direction: column;
+      .mesagge__content-title {
+        display: flex;
+        gap: 67px;
+        .mesagge__content-title-name {
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 24px;
+          color: #2e2e2e;
+        }
+        .mesagge__content-title-date {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          text-align: right;
+          color: #2e2e2e;
+        }
+      }
+      .message__content-text {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #adadad;
+      }
     }
   }
 }

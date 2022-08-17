@@ -27,10 +27,98 @@ const App = () => {
                   <Avatar img={morpheus} heigth={80} width={80} />
                 </div>
                 <div className="messages__content">
-                  <div className="mesagge__content-title">Morpheus</div>
-                  <div className="message__content-text">Hallo World!</div>
+                  <div className="mesagge__content-title">
+                    <p className="mesagge__content-title-name">Morpheus</p>
+                    <p className="mesagge__content-title-date">jun 17, 2017</p>
+                  </div>
+                  <div className="message__content-text">
+                    <p>We are losing money! Quick!</p>
+                  </div>
                 </div>
-                asd
+              </div>
+              <div className="messages">
+                <div className="messages__avatar">
+                  <Avatar img={morpheus} heigth={80} width={80} />
+                </div>
+                <div className="messages__content">
+                  <div className="mesagge__content-title">
+                    <p className="mesagge__content-title-name">Morpheus</p>
+                    <p className="mesagge__content-title-date">jun 17, 2017</p>
+                  </div>
+                  <div className="message__content-text">
+                    <p>We are losing money! Quick!</p>
+                  </div>
+                </div>
+              </div>
+              <div className="messages">
+                <div className="messages__avatar">
+                  <Avatar img={morpheus} heigth={80} width={80} />
+                </div>
+                <div className="messages__content">
+                  <div className="mesagge__content-title">
+                    <p className="mesagge__content-title-name">Morpheus</p>
+                    <p className="mesagge__content-title-date">jun 17, 2017</p>
+                  </div>
+                  <div className="message__content-text">
+                    <p>We are losing money! Quick!</p>
+                  </div>
+                </div>
+              </div>
+              <div className="messages">
+                <div className="messages__avatar">
+                  <Avatar img={morpheus} heigth={80} width={80} />
+                </div>
+                <div className="messages__content">
+                  <div className="mesagge__content-title">
+                    <p className="mesagge__content-title-name">Morpheus</p>
+                    <p className="mesagge__content-title-date">jun 17, 2017</p>
+                  </div>
+                  <div className="message__content-text">
+                    <p>We are losing money! Quick!</p>
+                  </div>
+                </div>
+              </div>
+              <div className="messages">
+                <div className="messages__avatar">
+                  <Avatar img={morpheus} heigth={80} width={80} />
+                </div>
+                <div className="messages__content">
+                  <div className="mesagge__content-title">
+                    <p className="mesagge__content-title-name">Morpheus</p>
+                    <p className="mesagge__content-title-date">jun 17, 2017</p>
+                  </div>
+                  <div className="message__content-text">
+                    <p>We are losing money! Quick!</p>
+                  </div>
+                </div>
+              </div>
+              <div className="messages">
+                <div className="messages__avatar">
+                  <Avatar img={morpheus} heigth={80} width={80} />
+                </div>
+                <div className="messages__content">
+                  <div className="mesagge__content-title">
+                    <p className="mesagge__content-title-name">Morpheus</p>
+                    <p className="mesagge__content-title-date">jun 17, 2017</p>
+                  </div>
+                  <div className="message__content-text">
+                    <p>We are losing money! Quick!</p>
+                  </div>
+                </div>
+              </div>
+              <div className="messages">
+                <div className="messages__avatar">
+                  <Avatar img={morpheus} heigth={80} width={80} />
+                </div>
+                <div className="messages__content">
+                  <div className="mesagge__content-title">
+                    <p className="mesagge__content-title-name">Morpheus</p>
+                    <p className="mesagge__content-title-date">jun 17, 2017</p>
+                  </div>
+                  <div className="message__content-text">
+                    <p>We are losing money! Quick!</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
