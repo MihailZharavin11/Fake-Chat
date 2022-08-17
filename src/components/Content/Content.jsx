@@ -4,7 +4,7 @@ import paperplane from "../../images/paperplane.svg";
 import "./content.scss";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { getUser, addMessage } from "../../store/slices/usersSlice";
+import { getUser, addMessage, getMessage } from "../../store/slices/usersSlice";
 import Message from "../Message/Message";
 import { useDispatch } from "react-redux";
 
@@ -26,6 +26,9 @@ const Content = () => {
     };
     dispatch(addMessage(valueToAdd));
     setInput("");
+    setTimeout(() => {
+      dispatch(getMessage(id));
+    }, 1000);
   };
 
   return (

@@ -1,7 +1,12 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSelector,
+  createSlice,
+} from "@reduxjs/toolkit";
 import morpheus from "../../images/morpheus.png";
 import robot from "../../images/robot.png";
 import gilfoyd from "../../images/gilfoyd.png";
+import api from "../../api";
 
 const initialState = {
   users: [
@@ -56,6 +61,24 @@ const initialState = {
   loading: "idle",
   error: null,
 };
+
+export const getMessage = createAsyncThunk(
+  "users/getMessage",
+  async (id, { dispatch, rejectWithValue }) => {
+    try {
+      const value = await api.getMessageFromChuck();
+      debugger;
+      const valueToAdd = {
+        id,
+        value: {
+          to: "interlocutor",
+          value,
+        },
+      };
+      dispatch(addMessage(valueToAdd));
+    } catch (e) {}
+  }
+);
 
 const usersSlice = createSlice({
   name: "users",
