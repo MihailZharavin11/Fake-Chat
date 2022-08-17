@@ -2,6 +2,7 @@
   display: grid;
   grid-template: minmax(0, 130px) auto minmax(0, 160px) / 1fr;
   overflow: hidden;
+  width: 100%;
   .chat__content-header {
     padding: 35px 30px;
     display: flex;

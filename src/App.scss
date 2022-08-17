@@ -6,9 +6,9 @@
 }
 
 .chat__wrapper {
-  border: 1px solid #adadad;
   height: 100%;
+  width: 100vw;
   display: grid;
-  grid-template: 1fr / minmax(0px, 400px) auto;
+  grid-template: 1fr / minmax(0px, 400px) 1fr;
   overflow: hidden;
 }

@@ -7,7 +7,7 @@ import gilfoyd from "../../images/gilfoyd.png";
 const initialState = {
   users: [
     {
-      id: uuidv4(),
+      id: "a9271398-160b-48b6-b93e-d92167a7edc1",
       name: "Morpheus",
       avatar: morpheus,
       messages: [
@@ -22,7 +22,7 @@ const initialState = {
       ],
     },
     {
-      id: uuidv4(),
+      id: "a98b9925-b1c9-4565-a14e-881585fdc318",
       name: "Mr.Robot",
       avatar: robot,
       messages: [
@@ -37,7 +37,7 @@ const initialState = {
       ],
     },
     {
-      id: uuidv4(),
+      id: "5c384b2a-1331-4b82-b81f-5039f7af1808",
       avatar: gilfoyd,
       name: "Gilfoyd",
       messages: [
@@ -69,7 +69,7 @@ const usersSlice = createSlice({
   },
 });
 
-export const sel = createSelector(
+export const getUsers = createSelector(
   (state) => state.users.users,
   (state) => state.users.filter,
   (allUsers, filter) => {
@@ -78,6 +78,14 @@ export const sel = createSelector(
       element.name.toLowerCase().includes(filter.toLowerCase())
     );
     return users;
+  }
+);
+
+export const getUser = createSelector(
+  (state) => state.users.users,
+  (state, id) => id,
+  (users, id) => {
+    return users.find((element) => element.id === id);
   }
 );
 

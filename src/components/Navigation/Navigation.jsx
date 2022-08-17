@@ -4,15 +4,13 @@ import avatar from "../../images/avatar.png";
 import "./navigation.scss";
 import Contact from "../Contact/Contact";
 import { useSelector, useDispatch } from "react-redux";
-import { addFilter, sel } from "../../store/slices/usersSlice";
+import { addFilter, getUsers } from "../../store/slices/usersSlice";
 import debounce from "lodash.debounce";
-
 const Navigation = () => {
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef(null);
   const dispatch = useDispatch();
-  // const { users } = useSelector((state) => state.users);
-  const users = useSelector(sel);
+  const users = useSelector(getUsers);
 
   const updateSearchValue = useCallback(
     debounce((str) => {
@@ -47,6 +45,7 @@ const Navigation = () => {
           return (
             <Contact
               key={element.id}
+              id={element.id}
               img={element.avatar}
               name={element.name}
               msg={element.messages[element.messages.length - 1].value}
