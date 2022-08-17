@@ -1,12 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
+import morpheus from "../../images/morpheus.png";
+import robot from "../../images/robot.png";
+import gilfoyd from "../../images/gilfoyd.png";
 
 const initialState = {
   users: [
     {
       id: uuidv4(),
       name: "Morpheus",
-      avatar: "",
+      avatar: morpheus,
       messages: [
         {
           to: "me",
@@ -21,7 +24,7 @@ const initialState = {
     {
       id: uuidv4(),
       name: "Mr.Robot",
-      avatar: "",
+      avatar: robot,
       messages: [
         {
           to: "me",
@@ -35,7 +38,7 @@ const initialState = {
     },
     {
       id: uuidv4(),
-      avatar: "",
+      avatar: gilfoyd,
       name: "Gilfoyd",
       messages: [
         {
@@ -50,6 +53,7 @@ const initialState = {
       ],
     },
   ],
+  filter: "",
   loading: "idle",
   error: null,
 };
@@ -59,11 +63,26 @@ const usersSlice = createSlice({
   initialState,
   reducers: {
     addMessage: (state, action) => {},
+    addFilter: (state, action) => {
+      state.filter = action.payload;
+    },
   },
 });
+
+export const sel = createSelector(
+  (state) => state.users.users,
+  (state) => state.users.filter,
+  (allUsers, filter) => {
+    if (!filter) return allUsers;
+    const users = allUsers.filter((element) =>
+      element.name.toLowerCase().includes(filter.toLowerCase())
+    );
+    return users;
+  }
+);
 
 const { reducer, actions } = usersSlice;
 
 export default reducer;
 
-export const { addMessage } = actions;
+export const { addMessage, addFilter } = actions;

@@ -1,0 +1,36 @@
+.contact {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid #adadad;
+}
+.contact__content {
+  display: flex;
+  flex-direction: column;
+  .contact__content-title {
+    display: flex;
+    gap: 67px;
+    margin-bottom: 2px;
+    .contact__content-title-name {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      color: #2e2e2e;
+    }
+    .contact__content-title-date {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      text-align: right;
+      color: #2e2e2e;
+    }
+  }
+  .contact__content-text {
+    p {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      color: #adadad;
+    }
+  }
+}
