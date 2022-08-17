@@ -1,10 +1,13 @@
-.chat__navigation-title-avatar {
-  background-color: #f6f6f6;
-  border-radius: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.avatar__wrapper {
   position: relative;
+  .avatar__inner {
+    border-radius: 40px;
+    background-color: #f6f6f6;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .check {
     position: absolute;
     right: 0px;

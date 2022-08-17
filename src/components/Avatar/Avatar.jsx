@@ -1,5 +1,4 @@
 import React from "react";
-import avatar from "../../images/avatar.png";
 import check from "../../images/check.png";
 import "./avatar.scss";
 const Avatar = ({ img, heigth, width }) => {
@@ -9,10 +8,12 @@ const Avatar = ({ img, heigth, width }) => {
         height: `${heigth}px`,
         width: `${width}px`,
       }}
-      className="chat__navigation-title-avatar"
+      className="avatar__wrapper"
     >
-      <img src={img} alt="avatar" />
-      <img className="check" src={check} alt="" />
+      <div className="avatar__inner">
+        <img src={img} alt="avatar" />
+      </div>
+      <img src={check} alt="check" className="check" />
     </div>
   );
 };

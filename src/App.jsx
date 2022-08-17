@@ -2,6 +2,7 @@ import "./App.scss";
 import React from "react";
 import avatar from "./images/avatar.png";
 import Avatar from "./components/Avatar/Avatar";
+import morpheus from "./images/morpheus.png";
 
 const App = () => {
   return (
@@ -23,7 +24,7 @@ const App = () => {
               <h3>Chats</h3>
               <div className="messages">
                 <div className="messages__avatar">
-                  <img src="" alt="" />
+                  <Avatar img={morpheus} heigth={80} width={80} />
                 </div>
                 <div className="messages__content">
                   <div className="mesagge__content-title">Morpheus</div>
