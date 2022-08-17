@@ -1,5 +1,4 @@
 import React from "react";
-import morph from "../../images/morpheus.png";
 import Avatar from "../Avatar/Avatar";
 import "./message.scss";
 

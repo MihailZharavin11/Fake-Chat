@@ -1,5 +1,4 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from "uuid";
 import morpheus from "../../images/morpheus.png";
 import robot from "../../images/robot.png";
 import gilfoyd from "../../images/gilfoyd.png";
@@ -62,7 +61,11 @@ const usersSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    addMessage: (state, action) => {},
+    addMessage: (state, action) => {
+      state.users
+        .find((element) => element.id === action.payload.id)
+        .messages.push(action.payload.value);
+    },
     addFilter: (state, action) => {
       state.filter = action.payload;
     },
