@@ -1,7 +1,7 @@
 import "./App.scss";
 import React from "react";
 import avatar from "./images/avatar.png";
-import check from "./images/check.png";
+import Avatar from "./components/Avatar/Avatar";
 
 const App = () => {
   return (
@@ -10,10 +10,7 @@ const App = () => {
         <div className="chat__wrapper">
           <div className="chat__navigation">
             <div className="chat__navigation-title">
-              <div className="chat__navigation-title-avatar">
-                <img src={avatar} alt="avatar" />
-                <img className="check" src={check} alt="" />
-              </div>
+              <Avatar img={avatar} heigth={60} width={60} />
               <div className="form">
                 <input
                   placeholder="Search or start new chat"
@@ -24,7 +21,16 @@ const App = () => {
             </div>
             <div className="chat__navigation-messages">
               <h3>Chats</h3>
-              <div className="chat__navigation-messages-items">asd</div>
+              <div className="messages">
+                <div className="messages__avatar">
+                  <img src="" alt="" />
+                </div>
+                <div className="messages__content">
+                  <div className="mesagge__content-title">Morpheus</div>
+                  <div className="message__content-text">Hallo World!</div>
+                </div>
+                asd
+              </div>
             </div>
           </div>
           <div className="chat__content">asd</div>

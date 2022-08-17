@@ -28,21 +28,6 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    .chat__navigation-title-avatar {
-      background-color: #f6f6f6;
-      border-radius: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      width: 60px;
-      height: 60px;
-      .check {
-        position: absolute;
-        right: 0px;
-        bottom: 0px;
-      }
-    }
   }
 
   .form {
