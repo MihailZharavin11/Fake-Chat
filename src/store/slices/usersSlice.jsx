@@ -18,10 +18,12 @@ const initialState = {
         {
           to: "me",
           value: "Wake up, Neo...",
+          date: new Date(),
         },
         {
           to: "interlocutor",
           value: "matrix everywhere",
+          date: new Date(),
         },
       ],
     },
@@ -33,10 +35,12 @@ const initialState = {
         {
           to: "me",
           value: "I am you",
+          date: new Date(),
         },
         {
           to: "interlocutor",
           value: "People use force when they can't find words.",
+          date: new Date(),
         },
       ],
     },
@@ -49,10 +53,12 @@ const initialState = {
           to: "interlocutor",
           value:
             "I am a kamikaze of humiliation. Ready to fall to the bottom, just to drag you along. Your shame is my reward.",
+          date: new Date(),
         },
         {
           to: "me",
           value: "Hallo, Gilfoyle",
+          date: new Date(),
         },
       ],
     },

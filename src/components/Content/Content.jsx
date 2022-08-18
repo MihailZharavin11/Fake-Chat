@@ -60,6 +60,7 @@ const Content = () => {
           {user.messages.map((element) => (
             <Message
               key={element.value}
+              date={element.date}
               element={element.value}
               avatar={user.avatar}
               to={element.to}

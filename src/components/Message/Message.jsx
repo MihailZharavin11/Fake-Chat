@@ -2,8 +2,14 @@ import React from "react";
 import Avatar from "../Avatar/Avatar";
 import "./message.scss";
 
-const Message = ({ avatar, to, value }) => {
+const Message = ({ avatar, to, value, date }) => {
   const side = to === "interlocutor" ? "message--start" : "message--end";
+  const dateLocal = date.toLocaleDateString();
+  var timeLocal = date.toLocaleString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
 
   return (
     <div className={`${"message"} ${side}`}>
@@ -12,7 +18,9 @@ const Message = ({ avatar, to, value }) => {
       ) : null}
       <div className="message__content">
         <div className="message__items">{value}</div>
-        <div className={`${"message__date"} ${side}`}>4/22/17, 4:00 AM</div>
+        <div
+          className={`${"message__date"} ${side}`}
+        >{`${dateLocal}, ${timeLocal}`}</div>
       </div>
     </div>
   );

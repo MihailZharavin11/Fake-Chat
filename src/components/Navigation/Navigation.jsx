@@ -49,6 +49,7 @@ const Navigation = () => {
               img={element.avatar}
               name={element.name}
               msg={element.messages[element.messages.length - 1].value}
+              date={element.messages[element.messages.length - 1].date}
             />
           );
         })}
