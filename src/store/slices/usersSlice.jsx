@@ -14,6 +14,7 @@ const initialState = {
       id: "a9271398-160b-48b6-b93e-d92167a7edc1",
       name: "Morpheus",
       avatar: morpheus,
+      touch: true,
       messages: [
         {
           to: "me",
@@ -31,6 +32,7 @@ const initialState = {
       id: "a98b9925-b1c9-4565-a14e-881585fdc318",
       name: "Mr.Robot",
       avatar: robot,
+      touch: true,
       messages: [
         {
           to: "me",
@@ -48,6 +50,7 @@ const initialState = {
       id: "5c384b2a-1331-4b82-b81f-5039f7af1808",
       avatar: gilfoyd,
       name: "Gilfoyd",
+      touch: true,
       messages: [
         {
           to: "interlocutor",
@@ -78,9 +81,11 @@ export const getMessage = createAsyncThunk(
         value: {
           to: "interlocutor",
           value,
+          date: new Date(),
         },
       };
       dispatch(addMessage(valueToAdd));
+      dispatch(changeTouch({ id }));
     } catch (e) {
       return rejectWithValue(e.message);
     }
@@ -105,12 +110,19 @@ const usersSlice = createSlice({
   initialState,
   reducers: {
     addMessage: (state, action) => {
-      state.users
-        .find((element) => element.id === action.payload.id)
-        .messages.push(action.payload.value);
+      const findElement = state.users.find(
+        (element) => element.id === action.payload.id
+      );
+      findElement.messages.push(action.payload.value);
     },
     addFilter: (state, action) => {
       state.filter = action.payload;
+    },
+    changeTouch: (state, action) => {
+      const findElement = state.users.find(
+        (element) => element.id === action.payload.id
+      );
+      findElement.touch = !findElement.touch;
     },
   },
   extraReducers: (builder) => {
@@ -123,11 +135,21 @@ const usersSlice = createSlice({
   },
 });
 
+const sortByDate = (array) => {
+  const newArray = [...array];
+  return newArray.sort((a, b) => {
+    return (
+      b.messages[b.messages.length - 1].date -
+      a.messages[a.messages.length - 1].date
+    );
+  });
+};
+
 export const getUsers = createSelector(
   (state) => state.users.users,
   (state) => state.users.filter,
   (allUsers, filter) => {
-    if (!filter) return allUsers;
+    if (!filter) return sortByDate(allUsers);
     const users = allUsers.filter((element) =>
       element.name.toLowerCase().includes(filter.toLowerCase())
     );
@@ -147,4 +169,4 @@ const { reducer, actions } = usersSlice;
 
 export default reducer;
 
-export const { addMessage, addFilter } = actions;
+export const { addMessage, addFilter, changeTouch } = actions;

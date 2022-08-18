@@ -4,8 +4,9 @@ import avatar from "../../images/avatar.png";
 import "./navigation.scss";
 import Contact from "../Contact/Contact";
 import { useSelector, useDispatch } from "react-redux";
-import { addFilter, getUsers } from "../../store/slices/usersSlice";
+import { addFilter, getUser, getUsers } from "../../store/slices/usersSlice";
 import debounce from "lodash.debounce";
+import { useParams } from "react-router-dom";
 const Navigation = () => {
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef(null);
@@ -50,6 +51,7 @@ const Navigation = () => {
               name={element.name}
               msg={element.messages[element.messages.length - 1].value}
               date={element.messages[element.messages.length - 1].date}
+              touch={element.touch}
             />
           );
         })}

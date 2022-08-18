@@ -1,0 +1,14 @@
+.layout__wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout__inner {
+  height: 100%;
+  width: 100vw;
+  display: grid;
+  grid-template: 1fr / minmax(0px, 400px) 1fr;
+  overflow: hidden;
+}

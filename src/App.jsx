@@ -3,17 +3,17 @@ import React from "react";
 import Navigation from "./components/Navigation/Navigation";
 import Content from "./components/Content/Content";
 import { Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
 
 const App = () => {
   return (
-    <div className="app_wrapper">
-      <div className="chat__wrapper">
-        <Navigation />
-        <Routes>
+    <div className="app">
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index path="/" element={<Content />} />
           <Route path="/:ids" element={<Content />} />
-          <Route path="/" element={<Content />} />
-        </Routes>
-      </div>
+        </Route>
+      </Routes>
     </div>
   );
 };

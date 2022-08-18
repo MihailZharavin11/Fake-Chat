@@ -18,7 +18,6 @@ const Content = () => {
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
 
-  console.log(new Date().toDateString());
   const scrollToBottom = () => {
     scrollRef.current.scrollIntoView({ behavior: "smooth" });
   };
@@ -35,13 +34,14 @@ const Content = () => {
       value: {
         to: "me",
         value: input,
+        date: new Date(),
       },
     };
     dispatch(addMessage(valueToAdd));
     setInput("");
     setTimeout(() => {
       dispatch(getMessage(user.id));
-    }, 1000);
+    }, 3000);
     scrollToBottom();
   };
 

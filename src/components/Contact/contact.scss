@@ -14,8 +14,11 @@
   .contact__content-title {
     display: flex;
     gap: 67px;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
     .contact__content-title-name {
+      display: flex;
+      align-items: center;
+      position: relative;
       font-weight: 500;
       font-size: 20px;
       line-height: 24px;
@@ -37,4 +40,14 @@
       color: #adadad;
     }
   }
+}
+
+.dot {
+  margin-top: 4px;
+  height: 5px;
+  width: 5px;
+  background-color: #0085ff;
+  border-radius: 50%;
+  display: block;
+  margin-left: 5px;
 }
