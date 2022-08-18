@@ -7,18 +7,31 @@ import { useSelector } from "react-redux";
 import { getUser, addMessage, getMessage } from "../../store/slices/usersSlice";
 import Message from "../Message/Message";
 import { useDispatch } from "react-redux";
+import EmptyContent from "../EmptyContent/EmptyContent";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 const Content = () => {
   let { ids } = useParams();
   const [input, setInput] = useState("");
-  let { id, name, avatar, messages } = useSelector((state) =>
-    getUser(state, ids)
-  );
+  let user = useSelector((state) => getUser(state, ids));
   const dispatch = useDispatch();
+  const scrollRef = useRef(null);
 
-  const click = () => {
+  console.log(new Date().toDateString());
+  const scrollToBottom = () => {
+    scrollRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (user && scrollRef) {
+      scrollToBottom();
+    }
+  }, [user?.messages, user]);
+
+  const sendMessage = () => {
     const valueToAdd = {
-      id: id,
+      id: user.id,
       value: {
         to: "me",
         value: input,
@@ -27,28 +40,36 @@ const Content = () => {
     dispatch(addMessage(valueToAdd));
     setInput("");
     setTimeout(() => {
-      dispatch(getMessage(id));
+      dispatch(getMessage(user.id));
     }, 1000);
+    scrollToBottom();
   };
+
+  if (!user) {
+    return <EmptyContent />;
+  }
 
   return (
     <div className="chat__content">
       <div className="chat__content-header">
-        <Avatar img={avatar} width={80} heigth={80} />
-        <h3>{name}</h3>
+        <Avatar img={user.avatar} width={80} heigth={80} />
+        <h3>{user.name}</h3>
       </div>
       <div className="chat__content-main">
         <div className="chat__content-main-items">
-          {messages.map((element) => (
+          {user.messages.map((element) => (
             <Message
+              key={element.value}
               element={element.value}
-              avatar={avatar}
+              avatar={user.avatar}
               to={element.to}
               value={element.value}
             />
           ))}
         </div>
+        <div ref={scrollRef}></div>
       </div>
+
       <div className="chat__content-footer">
         <form
           onSubmit={(e) => {
@@ -64,7 +85,7 @@ const Content = () => {
             className="footer__input"
             type="footer__input"
           />
-          <img onClick={click} src={paperplane} alt="paperplane" />
+          <img onClick={sendMessage} src={paperplane} alt="paperplane" />
         </form>
       </div>
     </div>

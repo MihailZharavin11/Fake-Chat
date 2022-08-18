@@ -4,6 +4,7 @@ import "./message.scss";
 
 const Message = ({ avatar, to, value }) => {
   const side = to === "interlocutor" ? "message--start" : "message--end";
+
   return (
     <div className={`${"message"} ${side}`}>
       {to === "interlocutor" ? (

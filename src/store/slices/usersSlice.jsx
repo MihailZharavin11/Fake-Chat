@@ -67,7 +67,6 @@ export const getMessage = createAsyncThunk(
   async (id, { dispatch, rejectWithValue }) => {
     try {
       const value = await api.getMessageFromChuck();
-      debugger;
       const valueToAdd = {
         id,
         value: {
@@ -76,9 +75,24 @@ export const getMessage = createAsyncThunk(
         },
       };
       dispatch(addMessage(valueToAdd));
-    } catch (e) {}
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
   }
 );
+
+const handlePendingStatus = (state) => {
+  state.loadingStatus = "loading";
+};
+
+const handleFulfilledStatus = (state) => {
+  state.loadingStatus = "idle";
+};
+
+const handleRejectedStatus = (state, action) => {
+  state.loadingStatus = "error";
+  state.error = action.payload;
+};
 
 const usersSlice = createSlice({
   name: "users",
@@ -92,6 +106,14 @@ const usersSlice = createSlice({
     addFilter: (state, action) => {
       state.filter = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getMessage.pending, handlePendingStatus)
+      .addCase(getMessage.fulfilled, handleFulfilledStatus)
+      .addCase(getMessage.rejected, (state, action) => {
+        handleRejectedStatus(state, action);
+      });
   },
 });
 
