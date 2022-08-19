@@ -12,3 +12,27 @@
   grid-template: 1fr / minmax(0px, 400px) 1fr;
   overflow: hidden;
 }
+
+@media (min-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and up)
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  .layout__inner {
+    grid-template: 1fr / minmax(0px, 300px) 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout__inner {
+    grid-template: 1fr / minmax(0px, 200px) 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .layout__inner {
+    grid-template: 1fr / minmax(0px, 130px) 1fr;
+  }
+}
