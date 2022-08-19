@@ -85,13 +85,11 @@ const usersSlice = createSlice({
 
 const sortByDate = (array) => {
   const newArray = [...array];
-  return newArray.sort((a, b) => {
-    debugger;
-    return (
+  return newArray.sort(
+    (a, b) =>
       new Date(b.messages[b.messages.length - 1].date) -
       new Date(a.messages[a.messages.length - 1].date)
-    );
-  });
+  );
 };
 
 export const getUsers = createSelector(

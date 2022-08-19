@@ -11,11 +11,12 @@
 .contact__content {
   display: flex;
   flex-direction: column;
-  .contact__content-title {
+  .contact__contentTitle {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 5px;
-    .contact__content-title-name {
+    .contact__contentTitleName {
       display: flex;
       align-items: center;
       position: relative;
@@ -24,7 +25,7 @@
       line-height: 24px;
       color: #2e2e2e;
     }
-    .contact__content-title-date {
+    .contact__contentTitleDate {
       font-weight: 400;
       font-size: 14px;
       line-height: 17px;
@@ -32,7 +33,7 @@
       color: #2e2e2e;
     }
   }
-  .contact__content-text {
+  .contact__contentText {
     p {
       font-weight: 400;
       font-size: 18px;

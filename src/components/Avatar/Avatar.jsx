@@ -1,6 +1,6 @@
 import React from "react";
 import check from "../../images/check.png";
-import "./avatar.scss";
+import styles from "./avatar.module.scss";
 const Avatar = ({ img, heigth, width }) => {
   return (
     <div
@@ -8,12 +8,12 @@ const Avatar = ({ img, heigth, width }) => {
         height: `${heigth}px`,
         width: `${width}px`,
       }}
-      className="avatar__wrapper"
+      className={styles.avatar__wrapper}
     >
-      <div className="avatar__inner">
+      <div className={styles.avatar__inner}>
         <img src={img} alt="avatar" />
       </div>
-      <img src={check} alt="check" className="check" />
+      <img src={check} alt="check" className={styles.check} />
     </div>
   );
 };

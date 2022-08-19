@@ -1,5 +1,5 @@
 import React from "react";
-import "./contact.scss";
+import styles from "./contact.module.scss";
 import Avatar from "../Avatar/Avatar";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -19,7 +19,7 @@ const Contact = ({ id, img, name, msg, date, newMessages }) => {
   const year = dateValue.toLocaleString("en-US", {
     year: "numeric",
   });
-  const dot = <span className="dot"></span>;
+  const dot = <span className={styles.dot}></span>;
 
   useEffect(() => {
     if (newMessages) {
@@ -28,20 +28,22 @@ const Contact = ({ id, img, name, msg, date, newMessages }) => {
   }, [newMessages, dispatch, ids]);
 
   return (
-    <Link to={`/${id}`} className="link">
-      <div className="contact">
-        <div className="contact__avatar">
+    <Link to={`/${id}`} className={styles.link}>
+      <div className={styles.contact}>
+        <div className={styles.contact__avatar}>
           <Avatar img={img} heigth={80} width={80} />
         </div>
-        <div className="contact__content">
-          <div className="contact__content-title">
-            <p className="contact__content-title-name">
+        <div className={styles.contact__content}>
+          <div className={styles.contact__contentTitle}>
+            <p className={styles.contact__contentTitleName}>
               {name}
               {newMessages && dot}
             </p>
-            <p className="contact__content-title-date">{`${month} ${day}, ${year}`}</p>
+            <p
+              className={styles.contact__contentTitleDate}
+            >{`${month} ${day}, ${year}`}</p>
           </div>
-          <div className="contact__content-text">
+          <div className={styles.contact__contentText}>
             <p>{msg.length < 30 ? msg : `${msg.slice(0, 30)}...`}</p>
           </div>
         </div>

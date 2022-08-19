@@ -1,13 +1,11 @@
 import React, { useState, useRef, useCallback } from "react";
 import Avatar from "../Avatar/Avatar";
 import avatar from "../../images/avatar.png";
-import "./navigation.scss";
+import styles from "./navigation.module.scss";
 import Contact from "../Contact/Contact";
 import { useSelector, useDispatch } from "react-redux";
-import { addFilter, getUser, getUsers } from "../../store/slices/usersSlice";
+import { addFilter, getUsers } from "../../store/slices/usersSlice";
 import debounce from "lodash.debounce";
-import { useParams } from "react-router-dom";
-import { useMemo } from "react";
 const Navigation = () => {
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef(null);
@@ -15,6 +13,7 @@ const Navigation = () => {
   const users = useSelector(getUsers);
 
   const updateSearchValue = useCallback(
+    //имитация работы с сервером, если убрать debounce, поиск будет работать без задержки в 1 секунду
     debounce((str) => {
       dispatch(addFilter(str));
     }, 1000),
@@ -27,21 +26,21 @@ const Navigation = () => {
   };
 
   return (
-    <div className="chat__navigation">
-      <div className="chat__navigation-title">
+    <div className={styles.chat__navigation}>
+      <div className={styles.chat__navigationTitle}>
         <Avatar img={avatar} heigth={60} width={60} />
-        <div className="form">
+        <div className={styles.form}>
           <input
             ref={inputRef}
             value={inputValue}
             onChange={(e) => onChangeInput(e.target.value)}
             placeholder="Search or start new chat"
-            className="form__input"
+            className={styles.form__input}
             type="text"
           />
         </div>
       </div>
-      <div className="chat__navigation-contacts">
+      <div className={styles.chat__navigationContacts}>
         <h3>Chats</h3>
         {users.map((element) => {
           return (

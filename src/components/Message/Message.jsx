@@ -1,6 +1,6 @@
 import React from "react";
 import Avatar from "../Avatar/Avatar";
-import "./message.scss";
+import styles from "./message.module.scss";
 
 const Message = ({ avatar, to, value, date }) => {
   const dateValue = new Date(date);
@@ -15,14 +15,16 @@ const Message = ({ avatar, to, value, date }) => {
   });
 
   return (
-    <div className={`${"message"} ${side}`}>
+    <div className={`${styles.message} ${styles[side]}`}>
       {to === "interlocutor" ? (
         <Avatar img={avatar} width={60} heigth={60} />
       ) : null}
-      <div className="message__content">
-        <div className={`${"message__items"} ${messageColor}`}>{value}</div>
+      <div className={styles.message__content}>
+        <div className={`${styles.message__items} ${styles[messageColor]}`}>
+          {value}
+        </div>
         <div
-          className={`${"message__date"} ${side}`}
+          className={`${styles.message__date} ${side}`}
         >{`${dateLocal}, ${timeLocal}`}</div>
       </div>
     </div>

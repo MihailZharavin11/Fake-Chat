@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Avatar from "../Avatar/Avatar";
 import paperplane from "../../images/paperplane.svg";
-import "./content.scss";
+import styles from "./content.module.scss";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
@@ -133,13 +133,13 @@ const Content = () => {
   }
 
   return (
-    <div className="chat__content">
-      <div className="chat__content-header">
+    <div className={styles.chat__content}>
+      <div className={styles.chat__contentHeader}>
         <Avatar img={user.avatar} width={80} heigth={80} />
         <h3>{user.name}</h3>
       </div>
-      <div className="chat__content-main">
-        <div className="chat__content-main-items">
+      <div className={styles.chat__contentMain}>
+        <div className={styles.chat__contentMainItems}>
           {user.messages.map((element) => (
             <Message
               key={element.value}
@@ -154,20 +154,20 @@ const Content = () => {
         <div ref={scrollRef}></div>
       </div>
 
-      <div className="chat__content-footer">
+      <div className={styles.chat__contentFooter}>
         <form
           onSubmit={(e) => {
             e.preventDefault();
           }}
-          className="footer__form"
+          className={styles.footer__form}
           action="#"
         >
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message"
-            className="footer__input"
-            type="footer__input"
+            className={styles.footer__input}
+            type="input"
           />
           <img onClick={sendMessage} src={paperplane} alt="paperplane" />
         </form>
