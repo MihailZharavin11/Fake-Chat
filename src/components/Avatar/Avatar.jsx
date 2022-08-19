@@ -4,10 +4,10 @@ import styles from "./avatar.module.scss";
 const Avatar = ({ img, heigth, width }) => {
   return (
     <div
-      style={{
-        height: `${heigth}px`,
-        width: `${width}px`,
-      }}
+      // style={{
+      //   height: `${heigth}px`,
+      //   width: `${width}px`,
+      // }}
       className={styles.avatar__wrapper}
     >
       <div className={styles.avatar__inner}>

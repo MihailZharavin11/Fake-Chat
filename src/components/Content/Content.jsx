@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Avatar from "../Avatar/Avatar";
 import paperplane from "../../images/paperplane.svg";
 import styles from "./content.module.scss";
-import { useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
   getUser,
@@ -26,6 +26,8 @@ const Content = () => {
   const users = useSelector((state) => state.users.users);
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
+  let setActiveClass = useOutletContext();
+  const navigate = useNavigate();
 
   const initial = [
     {
@@ -135,7 +137,16 @@ const Content = () => {
   return (
     <div className={styles.chat__content}>
       <div className={styles.chat__contentHeader}>
-        <Avatar img={user.avatar} width={80} heigth={80} />
+        <div
+          onClick={() => {
+            setActiveClass(false);
+            navigate("/", { state: ids });
+          }}
+          className={styles.chat__contentArrow}
+        >{`<`}</div>
+        <div className={styles.chat__contentAvatar}>
+          <Avatar img={user.avatar} width={80} heigth={80} />
+        </div>
         <h3>{user.name}</h3>
       </div>
       <div className={styles.chat__contentMain}>

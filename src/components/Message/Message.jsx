@@ -17,7 +17,9 @@ const Message = ({ avatar, to, value, date }) => {
   return (
     <div className={`${styles.message} ${styles[side]}`}>
       {to === "interlocutor" ? (
-        <Avatar img={avatar} width={60} heigth={60} />
+        <div className={styles.message__avatar}>
+          <Avatar img={avatar} width={60} heigth={60} />
+        </div>
       ) : null}
       <div className={styles.message__content}>
         <div className={`${styles.message__items} ${styles[messageColor]}`}>

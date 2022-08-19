@@ -2,12 +2,8 @@
   display: flex;
   gap: 16px;
   .message__avatar {
-    width: 100px;
-    height: 100px;
-    img {
-      width: 60px;
-      height: 60px;
-    }
+    width: 60px;
+    height: 60px;
   }
 
   .message__content {

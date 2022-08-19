@@ -33,6 +33,9 @@
 
 @media (max-width: 576px) {
   .layout__inner {
-    grid-template: 1fr / minmax(0px, 130px) 1fr;
+    grid-template: 1fr / 1fr 0px;
+    &.active {
+      grid-template: 1fr / 0px 1fr;
+    }
   }
 }

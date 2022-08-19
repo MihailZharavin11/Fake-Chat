@@ -7,3 +7,9 @@
   color: #adadad;
   font-size: 20px;
 }
+
+@media (max-width: 576px) {
+  .empty {
+    display: none;
+  }
+}

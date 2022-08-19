@@ -6,7 +6,7 @@ import Contact from "../Contact/Contact";
 import { useSelector, useDispatch } from "react-redux";
 import { addFilter, getUsers } from "../../store/slices/usersSlice";
 import debounce from "lodash.debounce";
-const Navigation = () => {
+const Navigation = ({ setActiveClass }) => {
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef(null);
   const dispatch = useDispatch();
@@ -28,7 +28,9 @@ const Navigation = () => {
   return (
     <div className={styles.chat__navigation}>
       <div className={styles.chat__navigationTitle}>
-        <Avatar img={avatar} heigth={60} width={60} />
+        <div className={styles.chat__navigationAvatar}>
+          <Avatar img={avatar} heigth={60} width={60} />
+        </div>
         <div className={styles.form}>
           <input
             ref={inputRef}
@@ -52,6 +54,7 @@ const Navigation = () => {
               msg={element.messages[element.messages.length - 1].value}
               date={element.messages[element.messages.length - 1].date}
               newMessages={element.newMessages}
+              setActiveClass={setActiveClass}
             />
           );
         })}
