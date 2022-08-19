@@ -140,6 +140,7 @@ const Content = () => {
         <div
           onClick={() => {
             setActiveClass(false);
+            //если мы в мобильной версии , то при нажатии назад, мы сохраняем прошлый юрл
             navigate("/", { state: ids });
           }}
           className={styles.chat__contentArrow}

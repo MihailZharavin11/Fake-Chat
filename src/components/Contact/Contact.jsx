@@ -10,7 +10,6 @@ const Contact = ({ id, img, name, msg, date, newMessages, setActiveClass }) => {
   const dispatch = useDispatch();
   const { ids } = useParams();
   const location = useLocation();
-  console.log(location.state);
   const dateValue = new Date(date);
   const month = dateValue.toLocaleString("en-US", {
     month: "short",
@@ -24,12 +23,12 @@ const Contact = ({ id, img, name, msg, date, newMessages, setActiveClass }) => {
   const dot = <span className={styles.dot}></span>;
 
   useEffect(() => {
-    if (newMessages) {
+    if (newMessages && ids) {
       dispatch(
         changeTouch({ id: ids ? ids : location.state, newMessages: false })
       );
     }
-  }, [dispatch, ids, newMessages]);
+  }, [ids, newMessages, dispatch]);
 
   return (
     <Link to={`/${id}`} className={styles.link}>
