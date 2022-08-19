@@ -6,26 +6,26 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { changeTouch } from "../../store/slices/usersSlice";
 
-const Contact = ({ id, img, name, msg, date, touch }) => {
+const Contact = ({ id, img, name, msg, date, newMessages }) => {
   const dispatch = useDispatch();
   const { ids } = useParams();
-  const month = date.toLocaleString("en-US", {
+  const dateValue = new Date(date);
+  const month = dateValue.toLocaleString("en-US", {
     month: "short",
   });
-  const day = date.toLocaleString("en-US", {
+  const day = dateValue.toLocaleString("en-US", {
     day: "numeric",
   });
-  const year = date.toLocaleString("en-US", {
+  const year = dateValue.toLocaleString("en-US", {
     year: "numeric",
   });
   const dot = <span className="dot"></span>;
 
   useEffect(() => {
-    debugger;
-    if (!touch) {
-      dispatch(changeTouch({ id: ids }));
+    if (newMessages) {
+      dispatch(changeTouch({ id: ids, newMessages: false }));
     }
-  }, [touch, dispatch, ids]);
+  }, [newMessages, dispatch, ids]);
 
   return (
     <Link to={`/${id}`} className="link">
@@ -37,7 +37,7 @@ const Contact = ({ id, img, name, msg, date, touch }) => {
           <div className="contact__content-title">
             <p className="contact__content-title-name">
               {name}
-              {!touch ? dot : null}
+              {newMessages && dot}
             </p>
             <p className="contact__content-title-date">{`${month} ${day}, ${year}`}</p>
           </div>

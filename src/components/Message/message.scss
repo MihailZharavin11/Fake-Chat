@@ -16,9 +16,15 @@
     width: 60%;
     .message__items {
       padding: 22px 20px;
-      background: #3e4255;
       border-radius: 45px;
       color: #fff;
+    }
+    .message__items--dark {
+      background: #3e4255;
+    }
+    .message__items--light {
+      background: #e4e4e4;
+      color: black;
     }
     .message__date {
       display: flex;

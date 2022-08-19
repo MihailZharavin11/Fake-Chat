@@ -3,69 +3,10 @@ import {
   createSelector,
   createSlice,
 } from "@reduxjs/toolkit";
-import morpheus from "../../images/morpheus.png";
-import robot from "../../images/robot.png";
-import gilfoyd from "../../images/gilfoyd.png";
 import api from "../../api";
 
 const initialState = {
-  users: [
-    {
-      id: "a9271398-160b-48b6-b93e-d92167a7edc1",
-      name: "Morpheus",
-      avatar: morpheus,
-      touch: true,
-      messages: [
-        {
-          to: "me",
-          value: "Wake up, Neo...",
-          date: new Date(),
-        },
-        {
-          to: "interlocutor",
-          value: "matrix everywhere",
-          date: new Date(),
-        },
-      ],
-    },
-    {
-      id: "a98b9925-b1c9-4565-a14e-881585fdc318",
-      name: "Mr.Robot",
-      avatar: robot,
-      touch: true,
-      messages: [
-        {
-          to: "me",
-          value: "I am you",
-          date: new Date(),
-        },
-        {
-          to: "interlocutor",
-          value: "People use force when they can't find words.",
-          date: new Date(),
-        },
-      ],
-    },
-    {
-      id: "5c384b2a-1331-4b82-b81f-5039f7af1808",
-      avatar: gilfoyd,
-      name: "Gilfoyd",
-      touch: true,
-      messages: [
-        {
-          to: "interlocutor",
-          value:
-            "I am a kamikaze of humiliation. Ready to fall to the bottom, just to drag you along. Your shame is my reward.",
-          date: new Date(),
-        },
-        {
-          to: "me",
-          value: "Hallo, Gilfoyle",
-          date: new Date(),
-        },
-      ],
-    },
-  ],
+  users: [],
   filter: "",
   loading: "idle",
   error: null,
@@ -73,19 +14,23 @@ const initialState = {
 
 export const getMessage = createAsyncThunk(
   "users/getMessage",
-  async (id, { dispatch, rejectWithValue }) => {
+  async (id, { dispatch, rejectWithValue, getState }) => {
     try {
       const value = await api.getMessageFromChuck();
-      const valueToAdd = {
-        id,
-        value: {
-          to: "interlocutor",
-          value,
-          date: new Date(),
-        },
-      };
-      dispatch(addMessage(valueToAdd));
-      dispatch(changeTouch({ id }));
+
+      setTimeout(() => {
+        const valueToAdd = {
+          id,
+          value: {
+            to: "interlocutor",
+            value,
+            date: new Date(),
+          },
+        };
+        dispatch(addMessage(valueToAdd));
+        dispatch(changeTouch({ id, newMessages: true }));
+        localStorage.setItem("users", JSON.stringify(getState().users.users));
+      }, 10000);
     } catch (e) {
       return rejectWithValue(e.message);
     }
@@ -122,7 +67,10 @@ const usersSlice = createSlice({
       const findElement = state.users.find(
         (element) => element.id === action.payload.id
       );
-      findElement.touch = !findElement.touch;
+      findElement.newMessages = action.payload.newMessages;
+    },
+    setUsers: (state, action) => {
+      state.users = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -138,9 +86,10 @@ const usersSlice = createSlice({
 const sortByDate = (array) => {
   const newArray = [...array];
   return newArray.sort((a, b) => {
+    debugger;
     return (
-      b.messages[b.messages.length - 1].date -
-      a.messages[a.messages.length - 1].date
+      new Date(b.messages[b.messages.length - 1].date) -
+      new Date(a.messages[a.messages.length - 1].date)
     );
   });
 };
@@ -169,4 +118,4 @@ const { reducer, actions } = usersSlice;
 
 export default reducer;
 
-export const { addMessage, addFilter, changeTouch } = actions;
+export const { addMessage, addFilter, changeTouch, setUsers } = actions;

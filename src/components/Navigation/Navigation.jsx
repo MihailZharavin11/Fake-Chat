@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addFilter, getUser, getUsers } from "../../store/slices/usersSlice";
 import debounce from "lodash.debounce";
 import { useParams } from "react-router-dom";
+import { useMemo } from "react";
 const Navigation = () => {
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef(null);
@@ -51,7 +52,7 @@ const Navigation = () => {
               name={element.name}
               msg={element.messages[element.messages.length - 1].value}
               date={element.messages[element.messages.length - 1].date}
-              touch={element.touch}
+              newMessages={element.newMessages}
             />
           );
         })}

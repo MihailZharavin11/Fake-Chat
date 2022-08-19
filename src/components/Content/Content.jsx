@@ -4,19 +4,86 @@ import paperplane from "../../images/paperplane.svg";
 import "./content.scss";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { getUser, addMessage, getMessage } from "../../store/slices/usersSlice";
+import {
+  getUser,
+  addMessage,
+  getMessage,
+  setUsers,
+} from "../../store/slices/usersSlice";
 import Message from "../Message/Message";
 import { useDispatch } from "react-redux";
 import EmptyContent from "../EmptyContent/EmptyContent";
 import { useRef } from "react";
 import { useEffect } from "react";
+import morpheus from "../../images/morpheus.png";
+import robot from "../../images/robot.png";
+import gilfoyd from "../../images/gilfoyd.png";
 
 const Content = () => {
   let { ids } = useParams();
   const [input, setInput] = useState("");
-  let user = useSelector((state) => getUser(state, ids));
+  const user = useSelector((state) => getUser(state, ids));
+  const users = useSelector((state) => state.users.users);
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
+
+  const initial = [
+    {
+      id: "a9271398-160b-48b6-b93e-d92167a7edc1",
+      name: "Morpheus",
+      avatar: morpheus,
+      newMessages: false,
+      messages: [
+        {
+          to: "me",
+          value: "Wake up, Neo...",
+          date: new Date(),
+        },
+        {
+          to: "interlocutor",
+          value: "matrix everywhere",
+          date: new Date(),
+        },
+      ],
+    },
+    {
+      id: "a98b9925-b1c9-4565-a14e-881585fdc318",
+      name: "Mr.Robot",
+      avatar: robot,
+      newMessages: false,
+      messages: [
+        {
+          to: "me",
+          value: "I am you",
+          date: new Date(),
+        },
+        {
+          to: "interlocutor",
+          value: "People use force when they can't find words.",
+          date: new Date(),
+        },
+      ],
+    },
+    {
+      id: "5c384b2a-1331-4b82-b81f-5039f7af1808",
+      avatar: gilfoyd,
+      name: "Gilfoyd",
+      newMessages: false,
+      messages: [
+        {
+          to: "interlocutor",
+          value:
+            "I am a kamikaze of humiliation. Ready to fall to the bottom, just to drag you along. Your shame is my reward.",
+          date: new Date(),
+        },
+        {
+          to: "me",
+          value: "Hallo, Gilfoyle",
+          date: new Date(),
+        },
+      ],
+    },
+  ];
 
   const scrollToBottom = () => {
     scrollRef.current.scrollIntoView({ behavior: "smooth" });
@@ -27,6 +94,22 @@ const Content = () => {
       scrollToBottom();
     }
   }, [user?.messages, user]);
+
+  useEffect(() => {
+    const usersFromLocal = localStorage.getItem("users");
+    if (usersFromLocal) {
+      dispatch(setUsers(JSON.parse(usersFromLocal)));
+    } else {
+      dispatch(setUsers(initial));
+      localStorage.setItem("users", JSON.stringify(initial));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (users.length > 0) {
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+  }, [users]);
 
   const sendMessage = () => {
     const valueToAdd = {
@@ -39,9 +122,7 @@ const Content = () => {
     };
     dispatch(addMessage(valueToAdd));
     setInput("");
-    setTimeout(() => {
-      dispatch(getMessage(user.id));
-    }, 3000);
+    dispatch(getMessage(user.id));
     scrollToBottom();
   };
 
