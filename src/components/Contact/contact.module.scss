@@ -10,6 +10,7 @@
 }
 .contact__content {
   display: flex;
+  width: 100%;
   flex-direction: column;
   .contact__contentTitle {
     display: flex;
@@ -19,7 +20,6 @@
     .contact__contentTitleName {
       display: flex;
       align-items: center;
-      position: relative;
       font-weight: 500;
       font-size: 20px;
       line-height: 24px;
@@ -49,6 +49,6 @@
   width: 5px;
   background-color: #0085ff;
   border-radius: 50%;
-  display: block;
+  display: flex;
   margin-left: 5px;
 }
