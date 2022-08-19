@@ -112,18 +112,20 @@ const Content = () => {
   }, [users]);
 
   const sendMessage = () => {
-    const valueToAdd = {
-      id: user.id,
-      value: {
-        to: "me",
-        value: input,
-        date: new Date(),
-      },
-    };
-    dispatch(addMessage(valueToAdd));
-    setInput("");
-    dispatch(getMessage(user.id));
-    scrollToBottom();
+    if (input) {
+      const valueToAdd = {
+        id: user.id,
+        value: {
+          to: "me",
+          value: input,
+          date: new Date(),
+        },
+      };
+      dispatch(addMessage(valueToAdd));
+      setInput("");
+      dispatch(getMessage(user.id));
+      scrollToBottom();
+    }
   };
 
   if (!user) {

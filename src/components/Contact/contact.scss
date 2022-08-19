@@ -13,7 +13,7 @@
   flex-direction: column;
   .contact__content-title {
     display: flex;
-    gap: 67px;
+    justify-content: space-between;
     margin-bottom: 5px;
     .contact__content-title-name {
       display: flex;
