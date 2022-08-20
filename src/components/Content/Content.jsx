@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import morpheus from "../../images/morpheus.png";
 import robot from "../../images/robot.png";
 import gilfoyd from "../../images/gilfoyd.png";
+import arrow from "../../images/arrow.svg";
 
 const Content = () => {
   let { ids } = useParams();
@@ -144,17 +145,19 @@ const Content = () => {
             navigate("/", { state: ids });
           }}
           className={styles.chat__contentArrow}
-        >{`<`}</div>
+        >
+          <img src={arrow} alt="backArrow" />
+        </div>
         <div className={styles.chat__contentAvatar}>
-          <Avatar img={user.avatar} width={80} heigth={80} />
+          <Avatar img={user.avatar} />
         </div>
         <h3>{user.name}</h3>
       </div>
       <div className={styles.chat__contentMain}>
         <div className={styles.chat__contentMainItems}>
-          {user.messages.map((element) => (
+          {user.messages.map((element, index) => (
             <Message
-              key={element.value}
+              key={element.value + index}
               date={element.date}
               element={element.value}
               avatar={user.avatar}

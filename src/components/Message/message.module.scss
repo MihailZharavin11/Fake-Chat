@@ -9,7 +9,7 @@
   .message__content {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    max-width: 60%;
     .message__items {
       padding: 22px 20px;
       border-radius: 45px;
@@ -37,4 +37,22 @@
 }
 .message--end {
   justify-content: end;
+}
+
+@media (max-width: 576px) {
+  .message {
+    gap: 8px;
+    margin-bottom: 32px;
+    word-break: break-all;
+    .message__content {
+      .message__items {
+        border-radius: 16px;
+        padding: 16px;
+      }
+      .message__date {
+        padding: 10px;
+        font-size: 16px;
+      }
+    }
+  }
 }

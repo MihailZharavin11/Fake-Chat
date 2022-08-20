@@ -6,7 +6,8 @@
   display: grid;
   grid-template: 1fr / minmax(0, 80px) auto;
   gap: 16px;
-  padding: 16px;
+  margin-bottom: 16px;
+  padding: 0px 30px 16px 0px;
   border-bottom: 1px solid #adadad;
 }
 .contact__avatar {
@@ -92,7 +93,9 @@
 @media (max-width: 576px) {
   .contact {
     grid-template: 1fr / minmax(0, 80px) auto;
-    padding: 10px;
+    padding: 0px 0px 16px 0px;
+    border-bottom: 1px solid #adadad;
+    gap: 8px;
   }
   .contact__avatar {
     width: 80px;
