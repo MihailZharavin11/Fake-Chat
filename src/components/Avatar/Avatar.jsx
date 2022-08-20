@@ -2,7 +2,6 @@ import React from "react";
 import check from "../../images/check.png";
 import styles from "./avatar.module.scss";
 const Avatar = ({ img, withCheck = true }) => {
-  console.log(withCheck);
   return (
     <div className={styles.avatar__wrapper}>
       <div className={styles.avatar__inner}>

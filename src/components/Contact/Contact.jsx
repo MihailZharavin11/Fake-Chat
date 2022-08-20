@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import styles from "./contact.module.scss";
 import Avatar from "../Avatar/Avatar";
 import { Link, useLocation, useParams } from "react-router-dom";

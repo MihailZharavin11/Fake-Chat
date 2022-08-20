@@ -153,6 +153,7 @@ const Content = () => {
         </div>
         <h3>{user.name}</h3>
       </div>
+
       <div className={styles.chat__contentMain}>
         <div className={styles.chat__contentMainItems}>
           {user.messages.map((element, index) => (
