@@ -89,7 +89,7 @@ const Content = () => {
   ];
 
   const scrollToBottom = () => {
-    scrollRef.current.scrollIntoView({ behavior: "smooth" });
+    scrollRef.current.scrollIntoView();
   };
 
   useEffect(() => {
